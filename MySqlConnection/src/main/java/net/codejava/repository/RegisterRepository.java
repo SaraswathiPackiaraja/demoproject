@@ -10,11 +10,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import net.codejava.model.RegModel;
 
+import java.util.Collections;
+
 
 @Repository
 public class RegisterRepository {
 
-    // private NamedParameterJdbcTemplate sqlDao;
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -43,10 +44,9 @@ public class RegisterRepository {
     }
 
     public String getUser(String username){
-        String sql = "SELECT password FROM register WHERE USERNAME = ?";
-
-        return jdbcTemplate.queryForObject(
-                sql, new Object[]{username}, String.class);
+        String sql = "SELECT password FROM register WHERE username = ?";
+        String result = jdbcTemplate.queryForObject(sql, new Object[] { username}, String.class);
+        return result;
         
     }
 }

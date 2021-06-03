@@ -2,11 +2,8 @@ package net.codejava.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 // import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import net.codejava.repository.RegisterRepository;
 import net.codejava.model.GenericResponse;
@@ -14,11 +11,13 @@ import net.codejava.model.RegModel;
 import net.codejava.model.UserModel;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(path = "/user")
 public class UserRegistrationController {
     @Autowired
     private RegisterRepository regRepository;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/validateUser", method = RequestMethod.POST, consumes = { "application/JSON" })
     public ResponseEntity<GenericResponse> validateUser(@RequestBody UserModel user) {
 
@@ -43,6 +42,7 @@ public class UserRegistrationController {
         return retVal;
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/adduser", method = RequestMethod.POST, consumes = { "application/JSON" })
     public ResponseEntity<GenericResponse> addUser(@RequestBody RegModel userToAdd) {
 

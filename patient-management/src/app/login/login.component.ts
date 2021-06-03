@@ -28,15 +28,13 @@ export class LoginComponent implements OnInit {
   userLogin() {
     this.authService.authenticateUser(this.loginForm.value)
       .subscribe(data => {
-        this.check = data;
+        this.check = data.success;
         console.log("success!", data.success)
+        if (this.check === true) {
+          this.router.navigateByUrl('/admin');
+        }
       });
-    console.log(this.check);
-    if (this.check === true) {
-      this.router.navigateByUrl('/admin');
-    }
-
   }
-    
+   
 }
 

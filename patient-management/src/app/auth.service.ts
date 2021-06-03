@@ -25,7 +25,7 @@ export class AuthService {
         
       })
     };
-    return this.http.post(this._url+"validateuser", data, httpOptions)
+    return this.http.post(this._url+"validateUser", data, httpOptions)
   }
 
   
