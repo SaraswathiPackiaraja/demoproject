@@ -1,0 +1,85 @@
+<div class="register">
+    <h2 class="register-header">Register</h2>
+    <div  *ngIf="!check">Try After sometime</div>
+
+    <form id="registerForm" [formGroup]="registerForm" class="register-container" (ngSubmit)="userRegister()" method = post>
+        <div class="container">
+            <div class="col-sm-6">
+                <input type="username" placeholder="Username" formControlName="username">
+                <div *ngIf="registerForm.controls.username.errors" class="help-block">
+                    <div *ngIf="registerForm.controls.username.touched && !registerForm.controls.username.valid" class = "alert-danger">
+                        <div *ngIf="registerForm.controls.username.errors.required">Username is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="col-sm-6">
+                <input type="password" placeholder="Password" formControlName="password">
+                <div *ngIf="registerForm.controls.password.errors" class="help-block">
+                    <div *ngIf="registerForm.controls.password.touched && !registerForm.controls.password.valid" class = "alert-danger">
+                        <div *ngIf="registerForm.controls.password.errors.required">
+                            Password is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="col-sm-6">
+                <input type="password" placeholder="Confirm Password" formControlName="confirmPassword"
+                    (blur)="passwordValidation()">
+                <div *ngIf="!passwordMatch">Password & Confirm Password doesn't match</div>
+            </div>
+
+            <!-- Email Id -->
+            <div class="col-sm-6">
+                <input type="email" placeholder="Email" formControlName="email">
+                <div *ngIf="registerForm.controls.email.errors" class="help-block">
+                    <div *ngIf="registerForm.controls.email.touched && !registerForm.controls.email.valid" class = "alert-danger">
+                        <div *ngIf="registerForm.controls.email.errors.required">
+                            Email is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Number -->
+            <div class="col-sm-6">
+                <input type="mobileNumber" placeholder="Mobile Number" formControlName="mobileNumber">
+                <div *ngIf="registerForm.controls.mobileNumber.errors" class="help-block">
+                    <div *ngIf="registerForm.controls.mobileNumber.touched && !registerForm.controls.mobileNumber.valid" class = "alert-danger">
+                        <div *ngIf="registerForm.controls.mobileNumber.errors.required">
+                            Mobile Number is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Registration Number -->
+            <div class="col-sm-6">
+                <input type="registrationNumber" placeholder="Registration Number" formControlName="registrationNumber">
+                <div *ngIf="registerForm.controls.registrationNumber.errors" class="help-block">
+                    <div *ngIf="registerForm.controls.registrationNumber.touched && !registerForm.controls.registrationNumber.valid" class = "alert-danger">
+                        <div *ngIf="registerForm.controls.registrationNumber.errors.required">
+                            Registration Number is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Address-->
+            <div class="col-sm-6">
+                <textarea class="form-control" placeholder="Address" formControlName="address"
+                        id="address Textarea1" rows="3"></textarea>
+            </div><br>
+
+            <!-- Register -->
+            <div class="col-sm-6">
+                <button type="submit" value="Register" class="btn btn-success"
+                    [disabled]="!registerForm.valid">Register</button>
+            </div>
+        </div>
+    </form>
+    <!-- <div>{{registerForm | json}}</div> -->
+</div>
