@@ -1,0 +1,28 @@
+<div class="login">
+  <h2 class="login-header">Login</h2>
+
+  <form [formGroup]="loginForm" class="login-container" (ngSubmit)="userLogin()">
+
+    <div class="container">
+      <input type="username" placeholder="Username" formControlName="username">
+      <div *ngIf="loginForm.controls.username.errors" class="help-block">
+        <div *ngIf="loginForm.controls.username.touched && !loginForm.controls.username.valid" class=" alert-danger">
+          <div *ngIf="loginForm.controls.username.errors.required">Username is required</div>
+        </div>
+      </div>
+
+      <input type="password" placeholder="Password" formControlName="password">
+      <div *ngIf="loginForm.controls.password.errors" class="help-block">
+        <div *ngIf="loginForm.controls.password.touched && !loginForm.controls.password.valid" class=" alert-danger">
+          <div *ngIf="loginForm.controls.password.errors.required">
+            Password is required
+          </div>
+        </div>
+      </div><br>
+      <div class="col-sm-6">
+        <button type="submit" value="login" class="btn btn-success" [disabled]="!loginForm.valid">Login</button>
+      </div>
+      <nav> Not Registered? <a routerLink="/register"> Register Now!</a></nav>
+    </div>
+  </form>
+</div>
